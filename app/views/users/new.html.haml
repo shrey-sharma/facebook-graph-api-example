@@ -1,0 +1,13 @@
+.navbar.navbar-inverse
+.container
+  .hero-unit
+    %h1{align: 'center'} Facebook Graph API Tool
+.container
+  - if flash[:error].present?
+    %p.alert.alert-error
+      = flash[:error].join('\n')
+  %p
+    = form_for @user, html: {class: 'form-inline', align: 'center'} do |f|
+      = f.label :access_token
+      = f.text_field :access_token
+      = f.submit('Get Data', class: 'btn')

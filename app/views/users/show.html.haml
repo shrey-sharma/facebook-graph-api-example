@@ -1,0 +1,44 @@
+.container
+  %h2 User Data
+
+  - if flash.now[:error].present?
+    %p.alert.alert-error
+      = flash.now[:error].join('\n')
+
+  -if @user.present?
+    %p
+      %b Facebook id:
+      = @user.fid
+    %p
+      %b Username:
+      = @user.username
+    %p
+      %b Name:
+      = @user.name
+    %p
+      %b Gender:
+      = @user.gender
+    %p
+      %b Hometown:
+      -if @user.hometown.nil?
+        Not available
+      -else
+        = @user.hometown['name']
+
+    %p
+      %b Location:
+      -if @user.location.nil?
+        Not available
+      -else
+        = @user.location['name']
+    %p
+      %b Bio:
+      -if @user.bio.nil?
+        Not available
+      -else
+        = @user.bio
+
+  .row
+    .span3
+      = link_to 'Home', root_path(@user), class: 'btn btn-block'
+
